@@ -102,7 +102,7 @@ function Hero() {
             </a>
           </div>
           <p className="mt-6 text-sm text-ink-muted">
-            No credit card required · HIPAA compliant · BAA included
+            Free 14 days · No card to start · HIPAA compliant
           </p>
         </div>
       </div>
@@ -251,28 +251,28 @@ function Step({
 /* ─────────────────────  EXERCISE LIBRARY  ───────────────────── */
 
 function ExerciseLibrary() {
-  const cbt = [
-    "CBT Thought Record",
-    "Behavioral Activation Log",
-    "Cognitive Distortion Spotter",
-    "Anxiety Exposure Ladder",
-    "Safety Behaviors Audit",
-    "Worry Postponement",
+  const cbt: [string, string][] = [
+    ["CBT Thought Record", "Untangle catastrophic thinking through a guided 7-step reflection."],
+    ["Behavioral Activation Log", "Schedule small wins to lift depressive low energy."],
+    ["Cognitive Distortion Spotter", "Identify which of 8 thinking traps is in play."],
+    ["Anxiety Exposure Ladder", "Build a client-led, graduated path through avoided situations."],
+    ["Safety Behaviors Audit", "Surface the small avoidances that quietly maintain anxiety."],
+    ["Worry Postponement", "Contain rumination by giving worry a defined window."],
   ];
-  const dbt = [
-    "DBT Diary Card",
-    "TIPP Skills Log",
-    "PLEASE Skills Tracker",
-    "Emotion Regulation Check-in",
-    "DEAR MAN Script Builder",
-    "Distress Tolerance Menu",
+  const dbt: [string, string][] = [
+    ["DBT Diary Card", "Track urges, emotions, and skill use across a week."],
+    ["TIPP Skills Log", "Practice and rate the four crisis-survival skills."],
+    ["PLEASE Skills Tracker", "Daily check-in on six self-care fundamentals."],
+    ["Emotion Regulation Check-in", "Name the emotion, rate intensity, choose a strategy."],
+    ["DEAR MAN Script Builder", "Draft a difficult conversation through 7 deliberate steps."],
+    ["Distress Tolerance Menu", "ACCEPTS, self-soothe, and IMPROVE — pick one in the moment."],
   ];
-  const universal = [
-    "Daily Mood Tracker",
-    "Values Clarification",
-    "Safety Plan Builder",
-    "Radical Acceptance Journal",
-    "Mindfulness Check-in",
+  const universal: [string, string][] = [
+    ["Daily Mood Tracker", "Mood, anxiety, energy, and sleep in under a minute."],
+    ["Values Clarification", "Map nine life domains by importance and current alignment."],
+    ["Safety Plan Builder", "A coping plan ready for crisis moments."],
+    ["Radical Acceptance Journal", "Sit with what is, before deciding what to do about it."],
+    ["Mindfulness Check-in", "A short, guided pause built for the busiest days."],
   ];
   return (
     <section id="library" className="mx-auto max-w-6xl px-6 py-24 md:py-32">
@@ -307,7 +307,7 @@ function LibraryColumn({
 }: {
   title: string;
   tone: "teal" | "purple" | "amber";
-  items: string[];
+  items: [string, string][];
 }) {
   const toneMap = {
     teal: "text-teal-600 border-teal-200 bg-teal-50",
@@ -321,11 +321,11 @@ function LibraryColumn({
       >
         {title}
       </span>
-      <ul className="space-y-2.5 text-sm text-ink-soft">
-        {items.map((i) => (
-          <li key={i} className="flex items-start gap-2">
-            <span className="mt-1.5 w-1 h-1 rounded-full bg-ink-muted shrink-0" />
-            <span>{i}</span>
+      <ul className="space-y-4 text-sm">
+        {items.map(([name, desc]) => (
+          <li key={name}>
+            <div className="font-medium text-ink leading-tight">{name}</div>
+            <div className="mt-1 text-xs text-ink-muted leading-snug">{desc}</div>
           </li>
         ))}
       </ul>
@@ -342,21 +342,23 @@ function Outcomes() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-teal-600 text-sm font-medium tracking-wide uppercase mb-4">
-              Outcomes that surface themselves
+              Between-session visibility
             </p>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight tracking-tight">
-              PHQ-9, GAD-7, and the trends you actually need.
+              Daily data your EHR
+              <span className="text-teal-600"> can&apos;t give you.</span>
             </h2>
             <p className="mt-6 text-lg text-ink-soft leading-relaxed">
-              Standardized assessments and daily mood data, charted automatically.
-              Get an alert when scores worsen. Walk into every session with a one-page
-              prep summary written for you.
+              Your EHR shows you what happened in session. Meridian shows you what
+              happens the other 167 hours. Mood, anxiety, sleep, energy — captured
+              the moment they&apos;re felt, not weeks later on a form.
             </p>
             <ul className="mt-8 space-y-4 text-ink-soft">
-              <Bullet>Validated PHQ-9 and GAD-7 collection on cadence</Bullet>
-              <Bullet>Mood, anxiety, sleep, energy daily sliders</Bullet>
+              <Bullet>Daily mood, anxiety, sleep, and energy — captured in the moment, not biweekly on a form</Bullet>
+              <Bullet>Homework completion correlated with outcome trends, automatically</Bullet>
               <Bullet>Pattern detection: &ldquo;anxiety 8+ four times this week after work&rdquo;</Bullet>
-              <Bullet>Auto-generated session prep, ready 1 hour before appointment</Bullet>
+              <Bullet>Auto-generated session prep, ready 1 hour before each appointment</Bullet>
+              <Bullet>PHQ-9 and GAD-7 collected on your chosen cadence — table stakes, handled</Bullet>
             </ul>
           </div>
           <DashboardMockup />
@@ -558,11 +560,16 @@ function Pricing() {
             Pricing
           </p>
           <h2 className="font-serif text-4xl md:text-5xl leading-tight tracking-tight">
-            One price. Everything included.
+            Less than five sessions a year.
           </h2>
-          <p className="mt-6 text-lg text-ink-soft">
-            No per-client charges, ever. The client app is always free for your
-            clients.
+          <p className="mt-6 text-lg text-ink-soft max-w-xl">
+            At $89/month, Meridian pays for itself if it keeps one client engaged
+            through one extra month — or surfaces one alert that prevents a dropout.
+          </p>
+          <p className="mt-3 text-sm text-ink-muted max-w-xl">
+            Per clinician seat, never per client. The client app is free for your
+            clients, always. 14-day trial — no card up front, we only invoice when
+            you decide to keep going.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -617,7 +624,7 @@ function Pricing() {
           />
         </div>
         <p className="mt-10 text-sm text-ink-muted text-center">
-          14-day free trial · No credit card · BAA included · Cancel anytime
+          14 days free, no card up front · BAA signed at signup · Cancel anytime
         </p>
       </div>
     </section>
@@ -741,9 +748,8 @@ function FinalCTA() {
             Find your meridian.
           </h2>
           <p className="mt-6 text-lg text-cream/90 max-w-2xl">
-            Start a 14-day trial. No card, no setup call required, BAA signed at
-            signup. Bring your first client into the warmer side of therapy
-            homework today.
+            Free for 14 days. No card to start, no setup call. We only invoice
+            when you decide to keep Meridian after the trial. BAA signed on signup.
           </p>
           <form className="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl">
             <input
