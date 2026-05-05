@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-teal-50: #f0faf6;
+  --color-teal-100: #d6f1e5;
+  --color-teal-200: #aae3cc;
+  --color-teal-300: #74cdac;
+  --color-teal-500: #1d9e75;
+  --color-teal-600: #178060;
+  --color-teal-700: #14684e;
+  --color-teal-900: #0c3d2e;
+
+  --color-amber: #e8a547;
+  --color-amber-soft: #f4d29a;
+
+  --color-purple: #7c5ba6;
+  --color-purple-soft: #c8b8de;
+
+  --color-coral: #e8775f;
+  --color-coral-soft: #f4b9ac;
+
+  --color-cream: #faf6f0;
+  --color-cream-warm: #f3ece1;
+  --color-ink: #1f2a26;
+  --color-ink-soft: #4a564f;
+  --color-ink-muted: #7a857f;
+  --color-rule: #e6dfd2;
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+}
+
+html {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-teal-200);
+  color: var(--color-teal-900);
+}
+
+/* Soft, slow ambient gradient behind hero */
+.hero-glow {
+  background:
+    radial-gradient(60% 50% at 20% 20%, rgba(29, 158, 117, 0.12), transparent 60%),
+    radial-gradient(50% 40% at 85% 30%, rgba(232, 165, 71, 0.10), transparent 65%),
+    radial-gradient(45% 35% at 50% 90%, rgba(124, 91, 166, 0.08), transparent 70%);
+}
