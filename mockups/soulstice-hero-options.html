@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soulstice — Hero Variations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --purple: #a770ef;
+      --lavender: #cf8bf3;
+      --peach: #fdb99b;
+      --ink: #1a1a1a;
+      --grey: #666;
+      --light: #f7f5f2;
+      --hairline: #e6e6e6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Montserrat", -apple-system, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      background: #fafafa;
+    }
+
+    h1, h2, h3 { font-family: "Montserrat"; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+    a { color: var(--purple); }
+
+    /* Variation labels */
+    .variation-label {
+      max-width: 1440px;
+      margin: 56px auto 16px;
+      padding: 0 64px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .variation-label .num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--peach);
+      background: var(--ink);
+      padding: 6px 10px;
+      border-radius: 2px;
+    }
+    .variation-label h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .variation-label .desc {
+      margin-left: auto;
+      color: var(--grey);
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    /* Header (consistent across all) */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 64px;
+      background: white;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .logo { font-weight: 800; letter-spacing: 0.04em; font-size: 22px; line-height: 1; }
+    .logo small { display: block; font-size: 10px; letter-spacing: 4px; font-weight: 600; margin-top: 4px; }
+    .logo.on-photo { color: white; }
+    .logo.on-photo small { color: white; }
+    .nav { display: flex; gap: 32px; }
+    .nav a { color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav.on-photo a { color: white; }
+    .nav a.active { text-decoration: underline; text-underline-offset: 6px; }
+    .cta {
+      background: var(--lavender);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Hero copy block (shared) */
+    .copy-block { max-width: 560px; }
+    .copy-block .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--purple);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .copy-block h1 {
+      font-size: 64px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .copy-block h1 .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--peach);
+      border-radius: 50%;
+      margin: 0 8px;
+      vertical-align: middle;
+      transform: translateY(-6px);
+    }
+    .copy-block .sub {
+      font-size: 19px;
+      line-height: 1.5;
+      color: #2a2a2a;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+    .copy-block .meta {
+      font-size: 13px;
+      color: var(--grey);
+      margin-bottom: 28px;
+      letter-spacing: 0.2px;
+    }
+    .copy-block .meta strong { color: var(--ink); font-weight: 600; }
+    .copy-block .ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .copy-block .btn-primary {
+      background: var(--lavender);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .copy-block .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      padding: 16px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border: 1.5px solid var(--ink);
+    }
+    .copy-block .trust {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .copy-block .trust .item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+      color: #2a2a2a;
+    }
+    .copy-block .trust .item::before {
+      content: "✓";
+      color: var(--purple);
+      font-weight: 700;
+    }
+    .copy-block .insurance-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--grey);
+      flex-wrap: wrap;
+    }
+    .copy-block .insurance-strip .label {
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .insurance-chip {
+      background: white;
+      border: 1px solid var(--hairline);
+      padding: 6px 10px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--grey);
+    }
+
+    /* On-photo white version */
+    .copy-block.white h1,
+    .copy-block.white .sub { color: white; }
+    .copy-block.white .meta { color: rgba(255, 255, 255, 0.85); }
+    .copy-block.white .meta strong { color: white; }
+    .copy-block.white .btn-secondary { color: white; border-color: white; }
+    .copy-block.white .insurance-strip { border-top-color: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.7); }
+    .copy-block.white .trust .item { color: rgba(255, 255, 255, 0.95); }
+
+    /* Photo placeholder */
+    .photo {
+      background: linear-gradient(135deg, #d8d4d0 0%, #b8b0a8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo .label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 2px;
+      color: white;
+      font-weight: 600;
+      max-width: 320px;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .photo.lifestyle { background: linear-gradient(135deg, #f4ebd9 0%, #d9c8a8 50%, #b89870 100%); }
+    .photo.warm { background: linear-gradient(135deg, #fdb99b 0%, #cf8bf3 50%, #a770ef 100%); }
+    .photo.team { background: linear-gradient(135deg, #c8c4c0 0%, #88807a 50%, #5a5a5a 100%); }
+
+    /* Variation 1: Split, lean, recommended */
+    .v1 {
+      max-width: 1440px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    .v1 .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      min-height: 620px;
+    }
+    .v1 .hero-copy {
+      padding: 96px 80px 96px 64px;
+      display: flex;
+      align-items: center;
+    }
+    .v1 .photo { min-height: 100%; }
+
+    /* Variation 2: Split, info-rich */
+    .v2 {
+      max-width: 1440px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    .v2 .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      min-height: 720px;
+    }
+    .v2 .hero-copy {
+      padding: 80px 64px;
+      display: flex;
+      align-items: center;
+    }
+    .v2 .copy-block h1 { font-size: 56px; }
+
+    /* Variation 3: Full-bleed photo with bottom-left overlay */
+    .v3 {
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    .v3 .hero {
+      position: relative;
+      height: 720px;
+    }
+    .v3 .photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .v3 .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+    }
+    .v3 .hero-copy {
+      position: absolute;
+      bottom: 64px;
+      left: 64px;
+      right: 64px;
+      max-width: 640px;
+      z-index: 2;
+    }
+    .v3 .copy-block h1 { font-size: 60px; }
+
+    /* Variation 4: Centered, photo as background, dark overlay */
+    .v4 {
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    .v4 .hero {
+      position: relative;
+      height: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .v4 .photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .v4 .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.6) 100%);
+    }
+    .v4 .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 0 32px;
+    }
+    .v4 .copy-block { max-width: none; }
+    .v4 .copy-block h1 { font-size: 72px; }
+    .v4 .copy-block .sub { font-size: 20px; }
+    .v4 .copy-block .ctas { justify-content: center; }
+    .v4 .copy-block .meta { text-align: center; }
+
+    .photo-options {
+      max-width: 1440px;
+      margin: 16px auto 0;
+      padding: 24px 64px;
+      background: #fef9f1;
+      border-left: 3px solid var(--peach);
+      font-size: 14px;
+      color: var(--grey);
+    }
+    .photo-options strong { color: var(--ink); }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--ink);
+      color: white;
+      padding: 14px 64px;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    .top-bar strong { color: var(--peach); letter-spacing: 1.5px; }
+    .top-bar a { color: white; text-decoration: none; padding: 6px 10px; border-radius: 3px; }
+    .top-bar a:hover { background: rgba(255, 255, 255, 0.1); }
+
+    @media (max-width: 1100px) {
+      .v1 .hero, .v2 .hero { grid-template-columns: 1fr; }
+      .v1 .hero-copy, .v2 .hero-copy { padding: 64px 32px; }
+      .photo { min-height: 320px; }
+      .copy-block h1 { font-size: 40px !important; }
+      .copy-block .sub { font-size: 17px; }
+      .v3 .hero, .v4 .hero { height: 560px; }
+      .header { padding: 16px 24px; flex-wrap: wrap; gap: 12px; }
+      .nav { gap: 16px; flex-wrap: wrap; font-size: 13px; }
+      .top-bar { padding: 12px 24px; flex-wrap: wrap; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <strong>SOULSTICE HERO MOCKUPS</strong>
+    <a href="#v1">V1 · Split, lean</a>
+    <a href="#v2">V2 · Split, info-rich</a>
+    <a href="#v3">V3 · Full-bleed + overlay</a>
+    <a href="#v4">V4 · Centered, photo bg</a>
+  </div>
+
+  <!-- ============== Variation 1 ============== -->
+  <div class="variation-label" id="v1">
+    <span class="num">V1</span>
+    <h2>Split layout, lean copy</h2>
+    <span class="desc">Recommended start. Clean, scannable, fast to read.</span>
+  </div>
+  <div class="v1">
+    <header class="header">
+      <div class="logo">SOULSTICE<small>THERAPY</small></div>
+      <nav class="nav">
+        <a href="#" class="active">Home</a>
+        <a href="#">Therapy Services</a>
+        <a href="#">Team</a>
+        <a href="#">Careers</a>
+        <a href="#">FAQ</a>
+        <a href="#">Blog</a>
+      </nav>
+      <a href="#" class="cta">Request Appointment</a>
+    </header>
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="copy-block">
+          <div class="eyebrow">Virtual Therapy</div>
+          <h1>Heal<span class="dot"></span>Grow<span class="dot"></span>Thrive</h1>
+          <p class="sub">A virtual therapy practice for adults navigating career, relationships, and family. Built around you — at the pace that feels right.</p>
+          <p class="meta"><strong>Now serving</strong> California · New York · Arizona · Illinois &nbsp;·&nbsp; <strong>In-network</strong> with most major plans</p>
+          <div class="ctas">
+            <a href="#" class="btn-primary">Request Appointment</a>
+            <a href="#" class="btn-secondary">Meet our therapists</a>
+          </div>
+        </div>
+      </div>
+      <div class="photo team">
+        <div class="label">Photo: Soulstice team<br/>(or warm lifestyle shot)</div>
+      </div>
+    </div>
+  </div>
+  <div class="photo-options">
+    <strong>Photo direction for V1:</strong> Real team photo (3–5 clinicians, warm light, neutral background) is the strongest fit. Backup: a single warm lifestyle shot — no person, soft morning light, plant + window.
+  </div>
+
+  <!-- ============== Variation 2 ============== -->
+  <div class="variation-label" id="v2">
+    <span class="num">V2</span>
+    <h2>Split layout, info-rich</h2>
+    <span class="desc">Adds trust bullets and an insurance strip. More info, denser visual.</span>
+  </div>
+  <div class="v2">
+    <header class="header">
+      <div class="logo">SOULSTICE<small>THERAPY</small></div>
+      <nav class="nav">
+        <a href="#" class="active">Home</a>
+        <a href="#">Therapy Services</a>
+        <a href="#">Team</a>
+        <a href="#">Careers</a>
+        <a href="#">FAQ</a>
+        <a href="#">Blog</a>
+      </nav>
+      <a href="#" class="cta">Request Appointment</a>
+    </header>
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="copy-block">
+          <div class="eyebrow">Virtual Therapy · CA · NY · AZ · IL</div>
+          <h1>Heal<span class="dot"></span>Grow<span class="dot"></span>Thrive</h1>
+          <p class="sub">Virtual therapy for the life you're actually living — built for adults balancing career, relationships, and family.</p>
+          <div class="trust">
+            <div class="item">Warm, well-trained therapists</div>
+            <div class="item">Same therapist, every week</div>
+            <div class="item">Free 15-minute consultation</div>
+          </div>
+          <div class="ctas" style="margin-top: 28px;">
+            <a href="#" class="btn-primary">Request Appointment</a>
+            <a href="#" class="btn-secondary">Meet our therapists</a>
+          </div>
+          <div class="insurance-strip">
+            <span class="label">In-network with</span>
+            <span class="insurance-chip">OPTUM</span>
+            <span class="insurance-chip">BCBS IL</span>
+            <span class="insurance-chip">CIGNA</span>
+            <span class="insurance-chip">UHC</span>
+            <span class="insurance-chip">AETNA</span>
+          </div>
+        </div>
+      </div>
+      <div class="photo lifestyle">
+        <div class="label">Photo: Diverse adults<br/>or lifestyle interior</div>
+      </div>
+    </div>
+  </div>
+  <div class="photo-options">
+    <strong>Photo direction for V2:</strong> Diverse stock works here since the copy carries the credibility load. Best vibe: two adults in conversation at home, or a couple working through paperwork at a kitchen table — anything signaling "real adult life," not "anxious college student."
+  </div>
+
+  <!-- ============== Variation 3 ============== -->
+  <div class="variation-label" id="v3">
+    <span class="num">V3</span>
+    <h2>Full-bleed photo with bottom-left overlay</h2>
+    <span class="desc">Closer to current site. Photo dominates; copy panel sits over it.</span>
+  </div>
+  <div class="v3">
+    <header class="header" style="position: absolute; top: 0; left: 0; right: 0; z-index: 3; background: transparent;">
+      <div class="logo on-photo">SOULSTICE<small>THERAPY</small></div>
+      <nav class="nav on-photo">
+        <a href="#" class="active">Home</a>
+        <a href="#">Therapy Services</a>
+        <a href="#">Team</a>
+        <a href="#">Careers</a>
+        <a href="#">FAQ</a>
+        <a href="#">Blog</a>
+      </nav>
+      <a href="#" class="cta">Request Appointment</a>
+    </header>
+    <div class="hero">
+      <div class="photo team">
+        <div class="label">Full-bleed photo: Soulstice team<br/>or environmental portrait</div>
+      </div>
+      <div class="hero-copy">
+        <div class="copy-block white">
+          <div class="eyebrow" style="color: var(--peach);">Virtual Therapy</div>
+          <h1>Heal<span class="dot"></span>Grow<span class="dot"></span>Thrive</h1>
+          <p class="sub">A virtual therapy practice for adults navigating career, relationships, and family. Now serving California, New York, Arizona, and Illinois.</p>
+          <div class="ctas">
+            <a href="#" class="btn-primary">Request Appointment</a>
+            <a href="#" class="btn-secondary">Meet our therapists</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="photo-options">
+    <strong>Photo direction for V3:</strong> Photo carries 60% of the visual weight here, so it has to be strong. Best fit: an environmental portrait — a clinician at a window with morning light, or a candid team-of-two shot. The current "blonde with headphones" doesn't fit because there's nowhere for copy to sit without a heavy gradient overlay.
+  </div>
+
+  <!-- ============== Variation 4 ============== -->
+  <div class="variation-label" id="v4">
+    <span class="num">V4</span>
+    <h2>Centered, photo as background</h2>
+    <span class="desc">Big tagline moment. Photo is muted; copy is the hero.</span>
+  </div>
+  <div class="v4">
+    <header class="header" style="position: absolute; top: 0; left: 0; right: 0; z-index: 3; background: transparent;">
+      <div class="logo on-photo">SOULSTICE<small>THERAPY</small></div>
+      <nav class="nav on-photo">
+        <a href="#" class="active">Home</a>
+        <a href="#">Therapy Services</a>
+        <a href="#">Team</a>
+        <a href="#">Careers</a>
+        <a href="#">FAQ</a>
+        <a href="#">Blog</a>
+      </nav>
+      <a href="#" class="cta">Request Appointment</a>
+    </header>
+    <div class="hero">
+      <div class="photo warm">
+        <div class="label" style="opacity: 0.4;">Background photo: warm sunrise<br/>or soft interior</div>
+      </div>
+      <div class="hero-copy">
+        <div class="copy-block white">
+          <div class="eyebrow" style="color: var(--peach);">Virtual Therapy · CA · NY · AZ · IL</div>
+          <h1>Heal<span class="dot"></span>Grow<span class="dot"></span>Thrive</h1>
+          <p class="sub">Therapy for the life you're actually living. Built around you — at the pace that feels right.</p>
+          <div class="ctas">
+            <a href="#" class="btn-primary">Request Appointment</a>
+            <a href="#" class="btn-secondary">Meet our therapists</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="photo-options" style="margin-bottom: 96px;">
+    <strong>Photo direction for V4:</strong> Photo is heavily darkened, so it functions as texture, not subject. Best fit: an actual sunrise/sunset (literal solstice metaphor) or a soft warm interior. This variation works well even with stock because the photo isn't doing the storytelling — the type is.
+  </div>
+</body>
+</html>
