@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soulstice — Homepage Copy Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --purple: #a770ef;
+      --lavender: #cf8bf3;
+      --peach: #fdb99b;
+      --ink: #1a1a1a;
+      --grey: #666;
+      --light: #f7f5f2;
+      --white: #ffffff;
+      --hairline: #e6e6e6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Montserrat", -apple-system, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      background: var(--white);
+    }
+
+    h1, h2, h3 { font-family: "Montserrat", sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+    a { color: var(--purple); }
+
+    /* Floating note showing this is a mockup */
+    .mockup-note {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      z-index: 100;
+      max-width: 320px;
+      line-height: 1.5;
+    }
+    .mockup-note strong { color: var(--peach); }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 64px;
+      background: var(--white);
+      border-bottom: 1px solid transparent;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .logo small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 4px;
+      font-weight: 600;
+      margin-top: 4px;
+      color: var(--ink);
+    }
+    .nav { display: flex; gap: 36px; }
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .nav a:hover { color: var(--purple); }
+    .nav a.active { text-decoration: underline; text-underline-offset: 6px; }
+    .cta {
+      background: var(--lavender);
+      color: var(--white);
+      padding: 14px 26px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .cta:hover { background: var(--purple); }
+
+    /* Hero */
+    .hero {
+      height: 600px;
+      background: linear-gradient(135deg, #d8d4d0 0%, #b8b0a8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .placeholder-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 2px;
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Why section */
+    .why {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      padding: 120px 64px;
+      max-width: 1440px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .why-image {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #c8c4c0 0%, #989088 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-content h2 {
+      font-size: 40px;
+      margin-bottom: 28px;
+      font-weight: 700;
+    }
+    .why-content p {
+      margin-bottom: 18px;
+      font-size: 16px;
+      color: #2a2a2a;
+    }
+    .why-content .mission {
+      margin: 28px 0;
+    }
+    .why-content .mission strong {
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .why-content .closing {
+      margin-top: 28px;
+    }
+    .button-secondary {
+      display: inline-block;
+      background: var(--lavender);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 32px;
+      font-size: 15px;
+    }
+    .button-secondary:hover { background: var(--purple); }
+
+    /* Sub-banner */
+    .sub-banner {
+      height: 480px;
+      background: linear-gradient(110deg, #f9c8d3 0%, #d8a8e8 50%, #b8a4ec 100%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 96px;
+      position: relative;
+    }
+    .sub-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 70%, rgba(0, 0, 0, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 35% 85%, rgba(0, 0, 0, 0.2) 0%, transparent 35%);
+    }
+    .sub-banner-text {
+      font-size: 38px;
+      font-weight: 600;
+      max-width: 540px;
+      text-align: right;
+      line-height: 1.25;
+      color: var(--ink);
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+    .sub-banner-text strong { font-weight: 700; }
+
+    /* 3-up */
+    .three-up {
+      padding: 120px 64px;
+      max-width: 1440px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .three-up > h2 {
+      font-size: 40px;
+      margin-bottom: 80px;
+      font-weight: 700;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 64px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      filter: hue-rotate(0deg);
+    }
+    .card-icon.house { color: var(--purple); }
+    .card-icon.plant { color: var(--lavender); }
+    .card-icon.bolt { color: var(--peach); }
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .card p {
+      font-size: 15px;
+      max-width: 320px;
+      color: #2a2a2a;
+    }
+
+    /* Insurance */
+    .insurance {
+      padding: 96px 64px;
+      text-align: center;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .insurance h2 {
+      font-size: 36px;
+      margin-bottom: 64px;
+      font-weight: 700;
+    }
+    .logos {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .logo-placeholder {
+      font-weight: 700;
+      padding: 18px 32px;
+      background: #fafafa;
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      color: var(--grey);
+      font-size: 14px;
+      letter-spacing: 1px;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 56px 64px;
+      border-top: 1px solid var(--hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    .legal {
+      font-size: 9.5px;
+      color: #888;
+      letter-spacing: 0.6px;
+      max-width: 420px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: right;
+    }
+    .footer-links a {
+      color: var(--purple);
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Annotation chips — show what changed */
+    [data-changed] { position: relative; }
+    [data-changed]::after {
+      content: attr(data-changed);
+      position: absolute;
+      top: -10px;
+      right: -8px;
+      background: var(--peach);
+      color: var(--ink);
+      font-size: 9px;
+      padding: 3px 8px;
+      border-radius: 2px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    body.show-changes [data-changed]::after { opacity: 1; }
+
+    /* Toggle for changes */
+    .changes-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none;
+      z-index: 99;
+    }
+    .changes-toggle:hover { background: var(--purple); }
+
+    @media (max-width: 900px) {
+      .why { grid-template-columns: 1fr; gap: 48px; padding: 64px 32px; }
+      .cards { grid-template-columns: 1fr; gap: 48px; }
+      .header { padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
+      .nav { gap: 16px; flex-wrap: wrap; font-size: 13px; }
+      .sub-banner { padding: 0 32px; height: 360px; justify-content: center; }
+      .sub-banner-text { font-size: 28px; text-align: center; }
+      .three-up { padding: 64px 32px; }
+      .three-up > h2 { font-size: 28px; }
+      .why-content h2 { font-size: 32px; }
+      .footer { flex-direction: column; padding: 40px 32px; }
+      .footer-links { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <button class="changes-toggle" onclick="document.body.classList.toggle('show-changes')">
+    Toggle change markers
+  </button>
+
+  <header class="header">
+    <div class="logo">SOULSTICE<small>THERAPY</small></div>
+    <nav class="nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Therapy Services</a>
+      <a href="#">Team</a>
+      <a href="#">Careers</a>
+      <a href="#">FAQ</a>
+      <a href="#">Blog</a>
+    </nav>
+    <a href="#" class="cta">Request Appointment</a>
+  </header>
+
+  <section class="hero">
+    <div class="placeholder-label">Hero photo — woman with headphones, laptop on couch</div>
+  </section>
+
+  <section class="why">
+    <div class="why-image">
+      <div class="placeholder-label">Photo — woman on couch in loft kitchen</div>
+    </div>
+    <div class="why-content">
+      <h2>Why Soulstice</h2>
+      <p data-changed="revised">
+        Balancing your career, relationships, finances, and family isn't easy. When life
+        gets heavy, the first thing that gets cut is usually you.
+      </p>
+      <p data-changed="revised">
+        At Soulstice, we make space for the work that doesn't fit anywhere else —
+        slowing down, being seen, and starting to heal. Whether it's your first time
+        in therapy or your fifth, our work begins with acceptance, safety, and real
+        human connection.
+      </p>
+      <p class="mission" data-changed="tagline">
+        Our mission is simple.<br />
+        <strong>Help you heal. Help you grow. Help you thrive.</strong>
+      </p>
+      <p data-changed="revised">
+        We're a team of warm, well-trained virtual therapists who show up with full
+        presence and no judgment. Every session is a safe space built around you —
+        your needs, your pace, your story — and the practical skills you can carry
+        into the rest of your week.
+      </p>
+      <p class="closing">
+        This is therapy, reimagined for how life really feels.<br />
+        We're honored to walk this path with you.
+      </p>
+      <a href="#" class="button-secondary">Let's Talk</a>
+    </div>
+  </section>
+
+  <section class="sub-banner">
+    <div class="sub-banner-text" data-changed="revised">
+      Get help with anxiety, depression, and what's underneath — from a
+      <strong>trusted virtual therapist.</strong>
+    </div>
+  </section>
+
+  <section class="three-up">
+    <h2>Welcome to the Soulstice Safe Space</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon house">⌂</div>
+        <h3>A Space to Heal, Grow, and Thrive</h3>
+        <p data-changed="revised">
+          We listen first. Then we teach you the skills to keep growing — long after
+          the session ends.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon plant">❀</div>
+        <h3>Therapy Tailored to You</h3>
+        <p data-changed="revised">
+          Your sessions adapt to where you are — shaped by what you need, informed by
+          what you tell us.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon bolt">⚡</div>
+        <h3>Be Brave &amp; Change For Good</h3>
+        <p data-changed="revised">
+          We move at a pace that feels right. The work isn't easy — but it's yours,
+          and we're with you for every step of it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="insurance">
+    <h2>Insurances We Accept</h2>
+    <div class="logos">
+      <div class="logo-placeholder">OPTUM</div>
+      <div class="logo-placeholder">BCBS&nbsp;ILLINOIS</div>
+      <div class="logo-placeholder">CIGNA</div>
+      <div class="logo-placeholder">UnitedHealthcare</div>
+      <div class="logo-placeholder">AETNA</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="legal" data-changed="formatting">
+      SOULSTICE MARRIAGE AND FAMILY THERAPY PROFESSIONAL CORPORATION
+    </div>
+    <div class="footer-links">
+      <a href="#">Good Faith Estimate</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <div class="mockup-note">
+    <strong>Mockup preview.</strong> Faithful copy polish. Image blocks are placeholders
+    — keep your existing photos. Click the top-right button to highlight what changed.
+  </div>
+</body>
+</html>
