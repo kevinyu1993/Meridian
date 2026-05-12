@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Soulstice — V4 Hero Build Brief</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+    @page {
+      size: letter;
+      margin: 0.6in 0.7in 0.8in;
+      @bottom-right {
+        content: "Soulstice · V4 Hero · " counter(page) " / " counter(pages);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 8pt;
+        color: #888;
+      }
+    }
+    @page :first {
+      margin: 0;
+      @bottom-right { content: ""; }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10.5pt;
+      color: #1a1a1a;
+      line-height: 1.55;
+    }
+    p { margin-bottom: 6pt; }
+    .page-break { page-break-before: always; }
+    .section { page-break-inside: auto; }
+    .keep { page-break-inside: avoid; }
+
+    h1 { font-size: 22pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    h2 {
+      font-size: 16pt; font-weight: 700; margin-top: 18pt; margin-bottom: 8pt;
+      letter-spacing: -0.01em; color: #1a1a1a;
+      border-bottom: 1.5pt solid #1a1a1a; padding-bottom: 4pt;
+    }
+    h3 {
+      font-size: 11.5pt; font-weight: 700; margin-top: 14pt; margin-bottom: 5pt;
+      color: #1a1a1a;
+    }
+    ul, ol { margin-left: 18pt; margin-bottom: 8pt; }
+    li { margin-bottom: 3pt; }
+    code {
+      background: #f4f0ea;
+      padding: 1pt 5pt;
+      border-radius: 2pt;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 9.5pt;
+      color: #6b3a6f;
+    }
+
+    .copy-box {
+      background: #faf6ee;
+      border-left: 3pt solid #fdb99b;
+      padding: 10pt 14pt;
+      margin: 6pt 0 10pt;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 10pt;
+      color: #1a1a1a;
+      page-break-inside: avoid;
+    }
+    .copy-box em { font-style: normal; color: #888; font-size: 8.5pt; display: block; margin-top: 4pt; font-family: 'Montserrat', sans-serif; }
+
+    table { width: 100%; border-collapse: collapse; margin: 8pt 0 14pt; page-break-inside: avoid; }
+    thead th {
+      background: #1a1a1a; color: white; padding: 6pt 8pt;
+      font-size: 9pt; text-align: left; font-weight: 600;
+      letter-spacing: 0.5pt; text-transform: uppercase;
+    }
+    td {
+      padding: 7pt 8pt; border-bottom: 0.5pt solid #ddd;
+      font-size: 9.5pt; vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    .swatch-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8pt; margin: 8pt 0 14pt;
+    }
+    .swatch {
+      padding: 24pt 8pt; border-radius: 3pt; text-align: center;
+      font-size: 8.5pt; color: white; font-weight: 700;
+      letter-spacing: 0.5pt;
+    }
+
+    /* === COVER === */
+    .cover {
+      height: 11in; width: 8.5in;
+      background:
+        radial-gradient(circle 3.5in at 75% 80%, rgba(255, 235, 180, 0.55) 0%, transparent 60%),
+        radial-gradient(circle 4in at 25% 30%, rgba(255, 180, 120, 0.4) 0%, transparent 50%),
+        linear-gradient(160deg, #1a1538 0%, #3d2a5e 20%, #6b3a6f 40%, #a14868 60%, #d65d5f 80%, #ed8d5a 100%);
+      color: white; padding: 1.1in 1in;
+      display: flex; flex-direction: column; justify-content: space-between;
+      page-break-after: always;
+      position: relative;
+    }
+    .cover-mark {
+      font-size: 9pt; letter-spacing: 4pt; font-weight: 600;
+      opacity: 0.75;
+    }
+    .cover-title {
+      font-size: 52pt; font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 18pt;
+    }
+    .cover-sub {
+      font-size: 14pt; line-height: 1.5; max-width: 5.5in; font-weight: 400;
+      opacity: 0.92;
+    }
+    .cover-meta {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18pt;
+      font-size: 9.5pt; opacity: 0.85;
+      border-top: 1pt solid rgba(255, 255, 255, 0.3);
+      padding-top: 18pt;
+    }
+    .cover-meta strong {
+      display: block; font-size: 8pt; letter-spacing: 2pt; text-transform: uppercase;
+      margin-bottom: 5pt; opacity: 0.7; font-weight: 600;
+    }
+
+    /* === HERO RENDER === */
+    .hero-render {
+      height: 4.5in; width: 100%;
+      position: relative; overflow: hidden;
+      margin: 8pt 0 14pt; border-radius: 3pt;
+      page-break-inside: avoid;
+    }
+    .hero-render .bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle 1in at 50% 78%, rgba(255, 235, 180, 0.95) 0%, transparent 70%),
+        linear-gradient(180deg, #1a1538 0%, #6b3a6f 25%, #d65d5f 55%, #ed8d5a 70%, #f4b06a 82%, #2a2014 95%);
+    }
+    .hero-render .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.7) 100%);
+    }
+    .hero-render .header-mock {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 3;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10pt 18pt;
+      color: white; font-size: 8pt;
+    }
+    .hero-render .header-mock .logo strong { font-size: 11pt; font-weight: 800; letter-spacing: 1pt; }
+    .hero-render .header-mock .logo small { display: block; font-size: 6pt; letter-spacing: 2pt; }
+    .hero-render .header-mock .nav { display: flex; gap: 10pt; font-size: 7.5pt; }
+    .hero-render .header-mock .portal-btn {
+      background: #cf8bf3; padding: 5pt 10pt; border-radius: 2pt;
+      font-size: 7.5pt; font-weight: 600;
+    }
+    .hero-render .content {
+      position: relative; z-index: 2;
+      text-align: center; color: white;
+      display: flex; flex-direction: column; justify-content: center;
+      height: 100%; padding: 0 0.5in;
+    }
+    .hero-render .eyebrow {
+      font-size: 7.5pt; letter-spacing: 2.5pt; color: #fdb99b;
+      margin-bottom: 12pt; font-weight: 700; text-transform: uppercase;
+    }
+    .hero-render h1 {
+      font-size: 30pt; font-weight: 800; line-height: 1.05;
+      letter-spacing: -1pt; margin-bottom: 12pt; color: white;
+    }
+    .hero-render .sub {
+      font-size: 10pt; max-width: 4.5in; margin: 0 auto 18pt;
+      opacity: 0.88; line-height: 1.5;
+    }
+    .hero-render .ctas {
+      display: flex; gap: 10pt; justify-content: center;
+    }
+    .hero-render .btn-primary {
+      background: #cf8bf3; color: white;
+      padding: 9pt 20pt; border-radius: 2.5pt;
+      font-weight: 600; font-size: 9pt;
+    }
+    .hero-render .btn-secondary {
+      background: transparent; color: white;
+      padding: 8pt 18pt; border-radius: 2.5pt;
+      font-weight: 600; font-size: 9pt;
+      border: 1pt solid white;
+    }
+
+    .lead { font-size: 10.5pt; color: #555; margin-bottom: 10pt; font-style: italic; }
+    .callout {
+      background: #faf6ee; border-left: 3pt solid #a770ef;
+      padding: 10pt 14pt; margin: 10pt 0;
+      font-size: 9.5pt; color: #2a2a2a;
+    }
+    .callout strong { color: #6b3a6f; }
+
+    .checklist { list-style: none; margin-left: 0; }
+    .checklist li {
+      padding: 5pt 0 5pt 22pt; border-bottom: 0.5pt solid #eee;
+      position: relative; font-size: 10pt;
+    }
+    .checklist li::before {
+      content: "☐"; position: absolute; left: 0; top: 4pt;
+      font-size: 13pt; color: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ COVER PAGE ============ -->
+  <div class="cover">
+    <div class="cover-mark">SOULSTICE THERAPY  ·  BUILD BRIEF</div>
+    <div>
+      <div class="cover-title">Homepage Hero<br/>Rebuild</div>
+      <div class="cover-sub">
+        Squarespace 7.1 implementation. Hero section only.
+        Approximately 30–45 minutes of work, including the QA pass.
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div><strong>Prepared for</strong> Vilma</div>
+      <div><strong>Prepared by</strong> Kevin Yu — Soulstice</div>
+      <div><strong>Date</strong> May 2026</div>
+    </div>
+  </div>
+
+  <!-- ============ PAGE 2: VISUAL TARGET ============ -->
+  <h2>1. Visual target</h2>
+  <p class="lead">Build the Soulstice homepage hero to look like this. The background here is a CSS simulation — in production it's a real sunrise photo (see Section 5 for sourcing).</p>
+
+  <div class="hero-render">
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <div class="header-mock">
+      <div class="logo"><strong>SOULSTICE</strong><small>THERAPY</small></div>
+      <div class="nav">
+        <span style="text-decoration: underline; text-underline-offset: 2pt;">Home</span>
+        <span>Therapy Services</span>
+        <span>Team</span>
+        <span>Careers</span>
+        <span>FAQ</span>
+        <span>Blog</span>
+      </div>
+      <div class="portal-btn">Patient Portal</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Virtual Therapy  ·  CA · NY · AZ · IL</div>
+      <h1>Doing well on paper.<br/>Carrying more than that.</h1>
+      <p class="sub">Therapy for working professionals — through career changes, work-life stress, and relationships. Individual, couples, and family sessions, with therapists who've lived the same transitions.</p>
+      <div class="ctas">
+        <span class="btn-primary">Book a free consult</span>
+        <span class="btn-secondary">Meet our therapists</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Key intent:</strong> The hero opens with emotional recognition ("Doing well on paper. Carrying more than that.") before the niche kicks in. Subhead names the target audience (working professionals), the three problem areas (career changes, work-life stress, relationships), the services (individual / couples / family), and the differentiator (therapists who've made career transitions themselves).
+  </div>
+
+  <!-- ============ PAGE 3: BRAND ASSETS ============ -->
+  <div class="page-break"></div>
+  <h2>2. Brand assets</h2>
+
+  <h3>Color palette</h3>
+  <div class="swatch-grid">
+    <div class="swatch" style="background: #a770ef;">#A770EF<br/>PURPLE</div>
+    <div class="swatch" style="background: #cf8bf3;">#CF8BF3<br/>LAVENDER</div>
+    <div class="swatch" style="background: #fdb99b; color: #1a1a1a;">#FDB99B<br/>PEACH</div>
+    <div class="swatch" style="background: #1a1a1a;">#1A1A1A<br/>INK</div>
+  </div>
+  <p style="font-size: 9.5pt; color: #666;">Lavender is the primary CTA color. Peach is the eyebrow + accent. Purple is the hover state. Ink is body text and the on-scroll header.</p>
+
+  <h3>Typography</h3>
+  <p>Family: <strong>Montserrat</strong> (already installed in the site's Site Styles).</p>
+  <table>
+    <thead><tr><th>Use</th><th>Weight</th><th>Size</th></tr></thead>
+    <tbody>
+      <tr><td>Heading 1 (hero headline)</td><td>800 (ExtraBold)</td><td>72px desktop / 44px mobile</td></tr>
+      <tr><td>Subhead (paragraph)</td><td>400 (Regular)</td><td>19px</td></tr>
+      <tr><td>Eyebrow (caps line)</td><td>500–600</td><td>12px, letter-spacing 3.5px</td></tr>
+      <tr><td>Buttons</td><td>600 (Semibold)</td><td>15px, letter-spacing 0.5px</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Logo</h3>
+  <p>The dark hero background needs a <strong>white version of the Soulstice logo</strong> (transparent PNG, ~400px wide). Kevin will provide this — if not received, ask before starting.</p>
+
+  <!-- ============ PAGE 4: COPY STRINGS ============ -->
+  <div class="page-break"></div>
+  <h2>3. Copy strings (paste exactly as written)</h2>
+  <p class="lead">Paste each string exactly — em-dashes, line breaks, and bullet points are intentional.</p>
+
+  <h3>Header CTA button</h3>
+  <div class="copy-box">
+    Patient Portal
+    <em>Link to: Soulstice's patient portal (likely SimplePractice). Kevin to provide URL.</em>
+  </div>
+
+  <h3>Hero eyebrow (small caps line)</h3>
+  <div class="copy-box">
+    VIRTUAL THERAPY  ·  CA · NY · AZ · IL
+    <em>Use bullet character (·), not period. ALL CAPS.</em>
+  </div>
+
+  <h3>Hero headline (H1) — two lines, hit Enter between them</h3>
+  <div class="copy-box">
+    Doing well on paper.<br/>
+    Carrying more than that.
+    <em>Manual line break between the two sentences. No period at the start of line 2.</em>
+  </div>
+
+  <h3>Hero subhead</h3>
+  <div class="copy-box">
+    Therapy for working professionals — through career changes, work-life stress, and relationships. Individual, couples, and family sessions, with therapists who've lived the same transitions.
+    <em>Em-dash (—) not hyphen (-). Hyphen in "work-life" is correct.</em>
+  </div>
+
+  <h3>Hero primary button</h3>
+  <div class="copy-box">
+    Book a free consult
+    <em>Link to: 15-min consult scheduler (Calendly / intake form / /contact). Kevin to provide URL.</em>
+  </div>
+
+  <h3>Hero secondary button</h3>
+  <div class="copy-box">
+    Meet our therapists
+    <em>Link to: /team</em>
+  </div>
+
+  <!-- ============ PAGE 5: BUILD STEPS ============ -->
+  <div class="page-break"></div>
+  <h2>4. Step-by-step Squarespace 7.1 build</h2>
+
+  <div class="keep">
+    <h3>Step 1 — Header (transparency + Patient Portal label)</h3>
+    <p><strong>Path:</strong> click anywhere on the header → Edit Site Header → Style tab.</p>
+    <ul>
+      <li>Header background: Solid → 0% opacity (Transparent)</li>
+      <li>Text + icon color: White</li>
+      <li>Reduce header on scroll: <strong>ON</strong></li>
+      <li>Branding tab → Logo on Image: upload white logo</li>
+      <li>Find the header button → relabel to <code>Patient Portal</code> → set URL → save</li>
+    </ul>
+  </div>
+
+  <div class="keep">
+    <h3>Step 2 — Replace the existing hero section</h3>
+    <ul>
+      <li>Open Home page in edit mode</li>
+      <li>Hover the first section under the header → gear icon → Delete Section</li>
+      <li>+ Add Section → Banner template (or blank)</li>
+    </ul>
+  </div>
+
+  <div class="keep">
+    <h3>Step 3 — Section background image</h3>
+    <ul>
+      <li>Edit Section → Background tab → Image</li>
+      <li>Upload Kevin's sunrise photo, or use Squarespace's built-in Unsplash search (see Section 5)</li>
+      <li>Drag focal point to the warmest part of the sky</li>
+    </ul>
+  </div>
+
+  <div class="keep">
+    <h3>Step 4 — Color overlay</h3>
+    <ul>
+      <li>Same Background tab → Color Overlay → Enable</li>
+      <li>Color: Black <code>#000000</code></li>
+      <li>Opacity: <strong>45–55%</strong> (start at 50; adjust if text is hard to read)</li>
+    </ul>
+  </div>
+
+  <div class="keep">
+    <h3>Step 5 — Section dimensions</h3>
+    <ul>
+      <li>Width: Full width</li>
+      <li>Height: Large (or ~85vh)</li>
+      <li>Content Alignment: Center / Center (both axes)</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h3>Step 6 — Add content blocks (in order, all centered, all white)</h3>
+  <ol>
+    <li><strong>Text block</strong> for eyebrow → paste eyebrow copy → format as 12px Montserrat Medium, letter-spacing 3.5px, color <code>#FDB99B</code>, ALL CAPS</li>
+    <li><strong>Text block (Heading 1)</strong> → paste H1 (Enter between sentences) → 72px Montserrat ExtraBold, white, line-height 1.05, letter-spacing -0.025em</li>
+    <li><strong>Text block (Paragraph)</strong> → paste subhead → 19px Montserrat Regular, white at 88% opacity, max-width 680px</li>
+    <li><strong>Button Group block</strong> → two buttons:
+      <ul>
+        <li>Primary: <code>Book a free consult</code>, solid lavender <code>#CF8BF3</code>, white text</li>
+        <li>Secondary: <code>Meet our therapists</code>, transparent background + 1.5px white border + white text, links to <code>/team</code></li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>Step 7 — Lock fonts in Site Styles</h3>
+  <p><strong>Path:</strong> Site Styles (paint roller icon) → Fonts.</p>
+  <ul>
+    <li>Headings: Montserrat 700–800</li>
+    <li>Paragraph: Montserrat 400</li>
+    <li>Buttons: Montserrat 600, letter-spacing 0.5px</li>
+  </ul>
+
+  <h3>Step 8 — Mobile pass</h3>
+  <p>Switch to mobile view (phone icon, top of editor). Verify:</p>
+  <ul>
+    <li>H1 stacks across two lines</li>
+    <li>Subhead wraps without orphan words</li>
+    <li>Buttons stack vertically (acceptable)</li>
+    <li>Eyebrow not cut off — reduce letter-spacing if needed</li>
+    <li>Photo focal point still shows the sunrise</li>
+  </ul>
+
+  <h3>Step 9 — Save, preview, publish</h3>
+  <ul>
+    <li>Save (top right)</li>
+    <li>Preview in a new tab — check on real desktop + real phone</li>
+    <li>Scroll past the hero to confirm header becomes solid and readable</li>
+  </ul>
+
+  <!-- ============ PAGE: PHOTO GUIDANCE ============ -->
+  <div class="page-break"></div>
+  <h2>5. Sunrise photo guidance</h2>
+  <p class="lead">If Kevin hasn't provided a photo, use Squarespace's built-in Unsplash search.</p>
+
+  <table>
+    <thead><tr><th>Search query</th><th>What to look for</th></tr></thead>
+    <tbody>
+      <tr><td><code>sunrise mountains</code></td><td>Pink/orange sky with mountain silhouette. Most cinematic option.</td></tr>
+      <tr><td><code>sunrise sky pink purple</code></td><td>Pure-sky shots, no horizon. Abstract color study.</td></tr>
+      <tr><td><code>sunrise calm water</code></td><td>Sky reflected in still water. Quieter, doubled color.</td></tr>
+      <tr><td><code>golden hour window</code></td><td>Warm interior light. Less literal "sunrise," more "feeling of."</td></tr>
+      <tr><td><code>palm sunrise pink</code></td><td>Pink sky + palm silhouette. Matches Soulstice's brand-book reference.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Avoid</h3>
+  <ul>
+    <li><strong>Photos with people.</strong> The hero is mood, not subjects.</li>
+    <li><strong>Photos with strong centered subjects.</strong> Will fight the centered text.</li>
+    <li><strong>Cool / blue tones.</strong> Will fight the warm brand palette.</li>
+    <li><strong>Stock clichés.</strong> No coffee cups with steam, no alarm clocks, no laptop on a couch.</li>
+  </ul>
+
+  <!-- ============ PAGE: NEEDED FROM KEVIN ============ -->
+  <div class="page-break"></div>
+  <h2>6. What to confirm with Kevin before starting</h2>
+  <table>
+    <thead><tr><th>Item</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td>Patient Portal URL</td><td>The link for existing clients to log in (likely the SimplePractice client portal).</td></tr>
+      <tr><td>Free consult URL</td><td>15-min consult scheduler — Calendly link, intake form, or just <code>/contact</code>.</td></tr>
+      <tr><td>White logo file</td><td>Transparent PNG of the Soulstice wordmark in white, approximately 400px wide.</td></tr>
+      <tr><td>Sunrise photo (optional)</td><td>If Kevin has a specific photo. If not, use Unsplash from Section 5.</td></tr>
+      <tr><td>Squarespace plan</td><td>Confirm Business or higher if you plan to use Code Injection. Personal works for the standard build.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>7. QA checklist before marking done</h2>
+  <ul class="checklist">
+    <li>Header is transparent over the hero; becomes solid white on scroll</li>
+    <li>White logo visible on the dark hero photo</li>
+    <li>Patient Portal button text correct, links to correct URL</li>
+    <li>Headline reads exactly: "Doing well on paper. Carrying more than that." (with the line break)</li>
+    <li>Subhead matches the copy box exactly (em-dash, not hyphen)</li>
+    <li>Eyebrow is peach color, all caps, letter-spaced</li>
+    <li>Book a free consult button is solid lavender, links to the booking URL</li>
+    <li>Meet our therapists button is outline white, links to /team</li>
+    <li>Mobile view: H1 stacks two lines, buttons stack vertically, no orphan words</li>
+    <li>Photo focal point set so warmest sky stays visible at mobile crop</li>
+    <li>Color overlay set between 45–55% so text is legible but warmth shows through</li>
+    <li>Site saved and published</li>
+  </ul>
+
+  <div class="callout" style="margin-top: 18pt;">
+    <strong>Anything unclear?</strong> Ping Kevin before guessing. The hero is the highest-traffic moment on the site — better to ask than to ship something wrong.
+  </div>
+
+</body>
+</html>
