@@ -26,17 +26,13 @@ Carrying more than that.
 Therapy for working professionals — through career changes, work-life stress, and relationships. Individual, couples, and family sessions, with therapists who've lived the same transitions.
 ```
 
-**Primary button label:**
-```
-Request Appointment
-```
-Link to: your existing booking flow URL (the one your current "Request Appointment" button uses).
-
-**Secondary button label:**
+**Single hero button label:**
 ```
 Meet our therapists
 ```
 Link to: `/team`
+
+> Only one button in the hero. The header already has "Request Appointment" and stays visible on scroll — repeating it in the hero would be redundant. The hero's job is to invite discovery; the header's job is to capture the booking.
 
 ---
 
@@ -179,24 +175,18 @@ Style:
 - Max width: **680px** (Squarespace lets you set block width — slim it down so it doesn't span the whole screen)
 - Line height: **1.55**
 
-### 6d. CTAs
+### 6d. CTA — single button
 
-Add a **Button Group block** (one block, two buttons) — or two **Button blocks** side by side.
+Add a **Button block**.
 
-**Primary button:**
-- Label: `Request Appointment`
-- Link: your existing booking URL
+- Label: `Meet our therapists`
+- Link: `/team`
 - Style: **Primary / Solid**
 - Color: **Lavender `#CF8BF3`**
 - Text color: **White**
 - Padding: ~17px vertical
 
-**Secondary button:**
-- Label: `Meet our therapists`
-- Link: `/team`
-- Style: **Tertiary / Outline** (transparent background)
-- Border: **1.5px white**
-- Text color: **White**
+> One button only. The header's "Request Appointment" is persistent and handles the booking action — repeating it in the hero adds redundancy without value. The hero CTA pushes toward discovery (the Team page), where the career-switcher therapists earn the "lived the same transitions" promise from the subhead.
 
 ---
 
@@ -244,7 +234,7 @@ If anything looks off, Squarespace lets you set mobile-specific overrides on mos
 | Logo invisible on the dark hero | Upload white logo to the **Logo on Image** slot specifically (separate from the regular logo slot) |
 | Text unreadable on photo | Increase color overlay opacity to 55–60%, or pick a darker photo |
 | H1 wraps weird on tablet | Adjust the Site Styles base size, or set the H1 block's max-width manually |
-| Buttons look uneven | Use a Button Group block (single block) instead of two separate Button blocks — keeps spacing consistent |
+| Button looks anemic alone | Use Primary style (solid lavender), not Outline — with only one button, it needs visual weight |
 | Photo crops awkwardly on mobile | Re-set the focal point — drag the marker to the part of the photo you want to stay visible at narrow widths |
 
 ---
