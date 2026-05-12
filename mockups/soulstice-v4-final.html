@@ -60,14 +60,28 @@
       overflow: hidden;
     }
 
-    /* Background photo (placeholder = layered gradient simulating warm sunrise) */
+    /* Background photo — cinematic sunrise simulation
+       (Sky bands + horizon glow + sun core. Stand-in for the photo you'll upload.) */
     .hero-photo {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 30%, rgba(253, 185, 155, 0.6) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 70% at 80% 70%, rgba(167, 112, 239, 0.7) 0%, transparent 50%),
-        linear-gradient(135deg, #fdb99b 0%, #cf8bf3 45%, #a770ef 100%);
+        /* Sun core glow */
+        radial-gradient(circle 180px at 50% 78%, rgba(255, 235, 180, 0.95) 0%, rgba(255, 200, 130, 0.5) 30%, transparent 70%),
+        /* Horizon glow band */
+        radial-gradient(ellipse 80% 25% at 50% 80%, rgba(255, 180, 120, 0.6) 0%, transparent 70%),
+        /* Sky color bands — night to dawn to earth */
+        linear-gradient(180deg,
+          #1a1538 0%,
+          #3d2a5e 12%,
+          #6b3a6f 25%,
+          #a14868 40%,
+          #d65d5f 55%,
+          #ed8d5a 70%,
+          #f4b06a 82%,
+          #2a2014 94%,
+          #1a1410 100%
+        );
     }
 
     /* Subtle photo grain */
@@ -80,13 +94,13 @@
       mix-blend-mode: overlay;
     }
 
-    /* Dark overlay for legibility */
+    /* Dark overlay for legibility — softer so sunrise colors show through */
     .hero-photo::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(10, 10, 10, 0.65) 0%, rgba(10, 10, 10, 0.55) 50%, rgba(10, 10, 10, 0.75) 100%);
+        linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.35) 50%, rgba(10, 10, 10, 0.7) 100%);
     }
 
     /* Photo source note (placeholder indicator) */
@@ -326,12 +340,12 @@
 <body>
   <div class="review-bar">
     <strong>SOULSTICE · V4 FINAL HERO</strong>
-    <span class="meta">Niche pivot + relationships · Working professionals + couples · Drop-in copy for Squarespace</span>
+    <span class="meta">Recognition-led headline · Working professionals niche · Drop-in copy for Squarespace</span>
   </div>
 
   <section class="hero">
     <div class="hero-photo"></div>
-    <div class="photo-source">Photo placeholder — warm sunrise / soft interior</div>
+    <div class="photo-source">CSS sunrise simulation — upload a real sunrise photo in Squarespace</div>
 
     <header class="header">
       <div class="logo">SOULSTICE<small>THERAPY</small></div>
@@ -349,8 +363,8 @@
     <div class="hero-content">
       <div class="hero-inner">
         <div class="eyebrow">Virtual Therapy &nbsp;·&nbsp; CA · NY · AZ · IL</div>
-        <h1>Therapy for working professionals</h1>
-        <p class="sub">Navigating career changes, work-life stress, and relationships. Individual, couples, and family sessions with therapists who've lived the same transitions.</p>
+        <h1>Doing well on paper.<br/>Carrying more than that.</h1>
+        <p class="sub">Therapy for working professionals — through career changes, work-life stress, and relationships. Individual, couples, and family sessions, with therapists who've lived the same transitions.</p>
         <div class="ctas">
           <a href="#" class="btn-primary">Request Appointment</a>
           <a href="#" class="btn-secondary">Meet our therapists</a>
@@ -390,7 +404,7 @@
           </tr>
           <tr>
             <td>Section background</td>
-            <td>Photo (warm sunrise, soft interior, or team shot) + dark overlay at <strong>55–65% opacity</strong>. The mockup uses 55–75% layered. Adjust to taste — too dark loses warmth, too light loses legibility.</td>
+            <td>Sunrise photo + dark overlay at <strong>40–55% opacity</strong>. The mockup overlay is 35–70% layered (softer at the middle so the colors show through). See the photo recommendations below.</td>
           </tr>
           <tr>
             <td>Section height</td>
@@ -406,6 +420,45 @@
           </tr>
         </tbody>
       </table>
+
+      <h2 style="margin-top: 56px;">Sunrise photo — what to upload</h2>
+      <p class="lead">The CSS sunrise in this mockup is a stand-in. For the real site, upload a photographic sunrise that matches the mood. Squarespace's image uploader has a free Unsplash search built in — type the queries below.</p>
+
+      <table style="margin-top: 16px;">
+        <thead>
+          <tr><th>Search</th><th>What to look for</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>sunrise mountains</code></td>
+            <td>Pink/orange sky with mountain or hill silhouette. Strong horizon, lots of color. Most photographic option — feels cinematic.</td>
+          </tr>
+          <tr>
+            <td><code>sunrise sky pink purple</code></td>
+            <td>Pure-sky shots, no horizon. Pure color study, more abstract. Works because your overlay is the bottom 30% anyway.</td>
+          </tr>
+          <tr>
+            <td><code>sunrise calm water</code></td>
+            <td>Sky reflected in still water. Doubles the color. Tends to be quieter than mountain shots.</td>
+          </tr>
+          <tr>
+            <td><code>golden hour window</code></td>
+            <td>Interior shot with warm light pouring through a window. Less literal "sunrise," more "the feeling of one." Most on-brand if you want something quieter than a landscape.</td>
+          </tr>
+          <tr>
+            <td><code>palm sunrise pink</code></td>
+            <td>Pink/lavender sky with palm silhouette — close to your existing brand-book sunset reference (slide 12). Good fidelity move.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top: 56px;">What to avoid</h2>
+      <ul style="font-size: 14px; color: #2a2a2a; padding-left: 20px; line-height: 1.8;">
+        <li><strong>Photos with people.</strong> The CTA "Meet our therapists" already handles people. Hero should be mood, not subjects.</li>
+        <li><strong>Photos with strong center subjects.</strong> Your text is centered. Anything visually centered in the photo will fight the type. Pick photos with empty middle or low horizons.</li>
+        <li><strong>Photos that read green/blue/cool.</strong> The brand is sunrise — warm. Cool tones will fight the lavender CTA and the peach eyebrow.</li>
+        <li><strong>Photos that are too literal.</strong> A clock at 6am, a coffee cup with steam, etc. — these read as stock. Abstract sunrises do more work.</li>
+      </ul>
     </div>
   </section>
 </body>
